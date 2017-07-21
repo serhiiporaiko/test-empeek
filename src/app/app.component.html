@@ -9,53 +9,55 @@
         <div class="column">
             <h1>Items</h1>
             <div class="input_group">
-                <input [(ngModel)]="itemNameToAdd" class="add_name" type="text" name="" placeholder="Type name here...">                  
-                    <button
-                        [disabled]="!(itemNameToAdd || '').trim()"
-                        (click)="addItem()"
-                        class="btn btn_primary">
-                        Add new
-                    </button>
+                <button
+                    [disabled]="!(itemNameToAdd || '').trim()"
+                    (click)="addItem()"
+                    class="btn btn_primary">
+                    Add new
+                </button>
+                <div class="input">
+                    <input [(ngModel)]="itemNameToAdd" (keydown.enter)="addItem()" class="add_name" type="text" name="" placeholder="Type name here...">
+                </div>
             </div>
-            <div class="scrollable">
-                <div
-                    *ngFor="let item of items"
-                    [ngClass]="{ 'active': isActiveItem(item) }"
-                    (click)="setActiveItem(item)"
-                    class="item_col line">
-                    <div class="ellipsis title">{{ item.name }}</div>
-                    <div class="badge" *ngIf="item.comments.length > 0">{{ item.comments.length }}</div>
-                    <button (click)="deleteItem(item.id)" class="btn btn_delete">
-                        Delete
-                    </button>
+            <div class="items-container scrollable">
+                <div *ngFor="let item of items" (click)="setActiveItem(item)" [ngClass]="{ 'active': isActiveItem(item) }">
+                    <div class="item_col line clearfix">
+                        <button (click)="deleteItem(item.id)" class="btn btn_delete">
+                            Delete
+                        </button>
+                        <div class="ellipsis title">{{ item.name }}</div>
+                        <div class="badge" *ngIf="item.comments.length > 0">{{ item.comments.length }}</div>
+                    </div>
                 </div>
             </div>
         </div>
     
         <div class="column">
             <h1>Comments #2</h1>
-            <div class="scrollable">
-                <div *ngFor="let comment of activeItem.comments" class="comments_col line">
+            <div *ngIf="activeItem" class="comments-container">
+                <div class="comments_col post-comment">
                     <div class="icon">
-                        <img [src]="comment.author.photoUrl" [alt]="comment.author.name">
+                        <img src="https://fakeimg.pl/50x50/" alt="Anonymous">
                     </div>
                     <div class="text">
-                        {{ comment.text }}
+                        <textarea
+                            [(ngModel)]="commentTextToAdd"
+                            (keydown.enter)="addComment(activeItem.id);false"
+                            placeholder="Type comment here... (press ENTER to send)"
+                            rows="5"></textarea>
                     </div>
                 </div>
-                
-            </div>
-            <div class="comments_col your_comment">
-                <div class="icon">
-                    <img src="https://fakeimg.pl/50x50/" alt="Anonymous">
-                </div>
-                <div class="text">
-                    <textarea
-                        [(ngModel)]="commentTextToAdd"
-                        (keydown.enter)="addComment(activeItem.id);false"
-                        placeholder="Type comment here... (press ENTER to send)"
-                        rows="5"></textarea>
-                </div>
+
+                <div class="scrollable">
+                    <div *ngFor="let comment of activeItem.comments" class="comments_col line clearfix">
+                        <div class="icon">
+                            <img [src]="comment.author.photoUrl" [alt]="comment.author.name">
+                        </div>
+                        <div class="text">
+                            {{ comment.text }}
+                        </div>
+                    </div>                    
+                </div>                
             </div>
         </div>
     </div>

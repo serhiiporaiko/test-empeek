@@ -26,16 +26,23 @@ export class AppComponent implements OnInit {
   }  
 
   addItem() {
-    let item = this.itemsService.addItem(this.itemNameToAdd);
-    this.itemNameToAdd = '';
-    this.activeItem = item;
+    let name = (this.itemNameToAdd || '').trim();
+    if (name) {
+      let item = this.itemsService.addItem(this.itemNameToAdd);
+      this.itemNameToAdd = '';
+      this.activeItem = item;
+    }
   }
 
   deleteItem(id: number) {
     if (confirm('Are you sure?')) {
       this.itemsService.deleteItem(id);
-      if (this.activeItem && id == this.activeItem.id && this.items.length > 0)
-        this.activeItem = this.items[0];
+      if (this.activeItem && id == this.activeItem.id) {
+        if (this.items.length > 0)
+          this.activeItem = this.items[0];
+        else
+          this.activeItem = undefined
+      }        
     }
   }
 
@@ -49,7 +56,10 @@ export class AppComponent implements OnInit {
   }
 
   addComment(id: number) {
-    this.itemsService.addComment(id, this.commentTextToAdd);
-    this.commentTextToAdd = '';
+    let text = (this.commentTextToAdd || '').trim();
+    if (text) {
+      this.itemsService.addComment(id, this.commentTextToAdd);
+      this.commentTextToAdd = '';
+    }
   }
 }
