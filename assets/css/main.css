@@ -9,8 +9,7 @@
   overflow: hidden; }
 
 .scrollable {
-  overflow: auto;
-  height: 400px; }
+  overflow: auto; }
 
 .title {
   width: 60%;
@@ -40,8 +39,12 @@ h1 {
   color: #ffffff;
   font-family: "OpenSansSemiBold";
   border: 1px solid #27ccc0; }
+  .btn_primary:hover {
+    background-color: #16bbb0; }
   .btn_primary:disabled {
-    opacity: 0.5; }
+    background-color: #27ccc0;
+    opacity: 0.5;
+    cursor: default; }
 
 .btn_delete {
   border: 1px solid #ff3f64;
@@ -52,18 +55,21 @@ h1 {
     background-color: #ffe3e8; }
 
 .container {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   height: 100%;
+  width: 100%;
   position: fixed; }
 
 .input_group {
   margin-bottom: 10px;
   display: block; }
+  .input_group .input {
+    margin-right: 100px; }
   .input_group input {
-    margin-right: 140px; }
+    width: 100%; }
     .input_group input:focus {
       -webkit-box-shadow: 1px 1px 1px 2px rgba(39, 204, 192, 0.5);
       box-shadow: 1px 1px 1px 2px rgba(39, 204, 192, 0.5);
@@ -78,7 +84,7 @@ h1 {
   /*box-shadow: 0px 1px 2px 2px rgba(224,224,224,.5)*/
   border-radius: 5px;
   padding: 7px;
-  font-size: 14px; }
+  font-size: 12px; }
   .add_name::-webkit-input-placeholder {
     color: #cfcfcf; }
   .add_name::-moz-placeholder {
@@ -142,6 +148,13 @@ h1 {
   -ms-flex-negative: 0.8;
   flex-shrink: 0.8; }
 
+.items-container {
+  margin-left: -15px; }
+  .items-container > div {
+    padding-left: 15px; }
+  .items-container .active {
+    border-left: 3px solid #ff3f64; }
+
 .item_col {
   line-height: 1.7;
   padding: 10px 0; }
@@ -159,8 +172,22 @@ h1 {
   padding: 2px 8px;
   line-height: 1.25; }
 
+.comments-container {
+  height: 100%;
+  position: relative; }
+  .comments-container .post-comment {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .comments-container .scrollable {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 100px; }
+
 .comments_col {
-  display: inline-block;
   color: #858585;
   font-size: 11px;
   line-height: 1.25;
@@ -195,7 +222,7 @@ h1 {
 .text {
   margin-left: 55px; }
 
-.clearfix {
+.clearfix::after {
   content: "";
   display: block;
   clear: both; }
