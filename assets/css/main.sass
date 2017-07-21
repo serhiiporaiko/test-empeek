@@ -1,0 +1,166 @@
+$fontLight: "OpenSansLight"
+$fontRegular: "OpenSansRegular"
+$fontSemibold: "OpenSansSemiBold"
+$fontBold: "OpenSansBold"
+
+.line
+    border-bottom: 1px solid #f5f5f5
+.ellipsis
+    text-overflow: ellipsis
+    white-space: nowrap
+    overflow: hidden
+
+.scrollable
+    overflow: auto
+    height: 400px
+    
+.title
+    width: 60%
+    font-family: $fontSemibold
+    font-size: 14px
+    color: #2b2f3e
+    margin: 0
+    line-height: 0.9
+
+body
+    font-family: $fontRegular
+    
+h1
+    font-family: $fontLight
+    font-size: 30px
+    line-height: 1
+    color: #565a69
+
+.btn
+    border-radius: 4px
+    padding: 7px 15px
+    font-size: 12px
+    cursor: pointer
+
+.btn_primary
+    background-color: #27ccc0
+    color: #ffffff
+    font-family: $fontSemibold
+    border: 1px solid #27ccc0
+    &:disabled
+        opacity: 0.5
+
+.btn_delete
+    border: 1px solid #ff3f64
+    background-color: #ffffff
+    color: #ff3f64
+    font-family: $fontLight
+    &:hover
+        background-color: #ffe3e8
+
+.container
+    display: inline-flex
+    height: 100%
+    position: fixed
+
+.input_group
+    margin-bottom: 10px
+    display: block
+    input
+        margin-right: 140px
+        
+        &:focus
+            box-shadow: 1px 1px 1px 2px rgba(39,204,192,.5)
+            border-radius: 5px
+            outline: none
+            border-color: #27ccc0
+    button
+        float: right
+        
+.add_name
+    border: 1px solid #cfcfcf
+    /*box-shadow: 0px 1px 2px 2px rgba(224,224,224,.5)*/
+    border-radius: 5px
+    padding: 7px
+    font-size: 14px
+    &::placeholder
+        color: #cfcfcf
+    
+.menu
+    background-color: #2B2F3E
+    position: fixed
+    height: 100%
+    width: 200px
+    h1
+        color: #565a69
+        padding-left: 30px
+    div
+        background-color: #ff3b4f
+        color: #ffffff
+        font-size: 16px
+        line-height: 1.25
+        margin-top: 60px
+        padding: 15px 30px
+
+.content
+    display: inline-flex
+    padding: 15px
+    margin-left: 200px
+    flex-basis: 100%
+
+.column
+    display: flex
+    flex-direction: column
+    padding: 0 10px 0 15px
+    margin: 7px
+    border: 1px solid #ededed
+    box-shadow: 1px 1px 2px 1px rgba(15,15,15,.2)
+    border-radius: 5px
+    flex-basis: 45%
+    flex-grow: 0
+    flex-shrink: 0.8
+   
+.item_col
+    line-height: 1.7
+    padding: 10px 0
+    div
+        display: inline-block
+    button
+        float: right
+
+.badge
+    font-family: $fontBold
+    font-size: 11px
+    background-color: #27ccc0
+    color: #ffffff
+    border-radius: 15px
+    padding: 2px 8px
+    line-height: 1.25
+
+.comments_col
+    display: inline-block
+    color: #858585
+    font-size: 11px
+    line-height: 1.25
+    padding: 10px 0
+    textarea
+        box-sizing: border-box
+        border: 1px solid #cfcfcf
+        font-size: 12px
+        padding: 5px
+        width: 100%
+        font-family: $fontRegular
+        resize: none
+        &::placeholder
+            color: #cfcfcf
+
+.icon
+    border: 1px solid №f8f8f8    
+    float: left
+    width: 50px
+    height: 50px
+    img
+        box-sizing: border-box
+        
+.text
+    margin-left: 55px
+
+.clearfix 
+    content: ""
+    display: block 
+    clear: both
